@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { TaskBoard } from 'component/TaskBoard.tsx';
 
 type Todo = { // タスク内容保持
   value: string; // タスク内容(タスク名)
@@ -20,12 +21,13 @@ export const App = () => {
   const [text, setText] = useState(''); // textの初期値として空の文字列が入るようにする
   const [todos, setTodos] = useState<Todo[]>([]); // todosの初期値として何も入っていないTodo型の構造体(？)を入れる
   const [filter, setFilter] = useState<Filter>('all'); // filterの初期値にFilterのallを入れる
-  
+  /** 
   // textステートを更新するコールバック関数
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
-
+  */
+  
   // todosステートの更新をするコールバック関数
   const handleOnSubmit = () => {
     if (!text) return;
@@ -117,6 +119,7 @@ export const App = () => {
         <option value="unchecked">現在のタスク</option>
         <option value="removed">ごみ箱</option>
       </select>
+
       {filter === 'removed' ? (
         <button
           onClick={handleOnEmpty}
