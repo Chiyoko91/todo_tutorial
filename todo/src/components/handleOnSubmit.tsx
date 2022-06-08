@@ -1,7 +1,7 @@
 // todosステートの更新をするコールバック関数
 import { useState } from 'react';
 
-const handleOnSubmit = () => {
+export const handleOnSubmit = () => {
   if (!text) return;
     const newTodo: Todo = {
     value: text,
