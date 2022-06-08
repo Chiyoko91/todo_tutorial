@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { TaskBoard } from './components/TaskBoard';
 
 // メインのコンポーネント
