@@ -8,7 +8,3 @@ export type Todo = {
   };
 
 export type Filter = 'all' | 'checked' | 'unchecked' | 'removed';
-
-export const [text, setText] = useState('');
-export const [todos, setTodos] = useState<Todo[]>([]);
-export const [filter, setFilter] = useState<Filter>('all');

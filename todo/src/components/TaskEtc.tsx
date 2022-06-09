@@ -1,18 +1,25 @@
 import { useState } from 'react';
+import { Todo, Filter } from './classes';
 
-export type Todo = {
-  value: string;
-  readonly id: number;
-  checked: boolean;
-  removed: boolean;
-};
+export const TaskEtc = (text:string, todos:Todo, filter:Filter) => {
+  const [mytext, setText] = useState(text);
+  const [mytodos, setTodos] = useState(todos);
+  const [myfilter, setFilter] = useState(filter);
 
-type Filter = 'all' | 'checked' | 'unchecked' | 'removed';
-
-export const TaskEtc = () => {
-  const [text, setText] = useState('');
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [filter, setFilter] = useState<Filter>('all');
+  const filteredTodos = todos.filter((todo) => {
+    switch (filter) {
+      case 'all':
+        return !todo.removed;
+      case 'checked':
+        return todo.checked && !todo.removed;
+      case 'unchecked':
+        return !todo.checked && !todo.removed;
+      case 'removed':
+        return todo.removed;
+      default:
+        return todo;
+    }
+  });
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
